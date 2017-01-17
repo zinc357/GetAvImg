@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GetAvImg</string>
+    <string name="editText">请输入AV号:AV*****</string>
+    <string name="btn">查询</string>
+</resources>
