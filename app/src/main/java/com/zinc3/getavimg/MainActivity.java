@@ -3,6 +3,7 @@ package com.zinc3.getavimg;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private static final String B_URL = "http://www.bilibili.com/video/";
+    private WebView webView;
     private EditText editText;
     private TextView imgSrcTextView;
     private ImageView imageView;
@@ -47,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try{
+                            webView = (WebView) findViewById(R.id.webview);
                             imgSrcTextView = (TextView) findViewById(R.id.imgSrc);
                             imgSrc = element.attr("src");
                             imgSrcTextView.setText(imgSrc);
+                            webView.loadUrl("http:"+imgSrc);
                         }
                         catch (Exception e){
                             Toast.makeText(MainActivity.this,"视频不存在，或该视频只有会员可以享用",Toast.LENGTH_LONG).show();
@@ -58,6 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }).start();
-
     }
+
 }
