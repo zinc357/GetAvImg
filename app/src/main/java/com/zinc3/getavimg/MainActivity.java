@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,10 +21,9 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private static final String B_URL = "http://www.bilibili.com/video/";
-    private WebView webView;
     private EditText editText;
     private TextView imgSrcTextView;
-    private ImageView imageView;
+    private ImageView avImg;
     private String imgSrc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try{
-                            webView = (WebView) findViewById(R.id.webview);
+                            avImg = (ImageView) findViewById(R.id.AvImg);
                             imgSrcTextView = (TextView) findViewById(R.id.imgSrc);
                             imgSrc = element.attr("src");
                             imgSrcTextView.setText(imgSrc);
-                            webView.loadUrl("http:"+imgSrc);
+                            Glide.with(MainActivity.this).load("http:" + imgSrc).into(avImg);
                         }
                         catch (Exception e){
                             Toast.makeText(MainActivity.this,"视频不存在，或该视频只有会员可以享用",Toast.LENGTH_LONG).show();

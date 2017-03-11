@@ -26,9 +26,8 @@
         android:layout_height="wrap_content"
         android:autoLink="all"
         android:id="@+id/imgSrc"/>
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:id="@+id/webview"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AvImg"/>
 </LinearLayout>
